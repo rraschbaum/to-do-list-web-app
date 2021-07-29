@@ -1,0 +1,190 @@
+/* ------- Universal ------- */
+*, *:before, *:after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  font-size: 1.4rem;
+  color: #3C3C48;
+  background: -webkit-linear-gradient(
+    -70deg,
+    #a2facf,
+    #64acff
+  );
+  background-size: 400% 400%;
+  animation: gradient 6s ease infinite;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ------- Typography ------- */
+
+h1 {
+  padding-bottom: 1rem;
+  color: #F9F9F9;
+  font-size: 5rem;
+  text-align: center;
+  font-weight: 400;
+}
+
+.bottom-content {
+  font-size: 1.15rem;
+  color: #9B9B9B;
+}
+
+input, button {
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: 300;
+  color: inherit;
+}
+
+input::placeholder {
+  color: #B8BAC1;
+}
+
+button {
+  font-size: 1.15rem;
+}
+
+.task-content {
+  color: #3C3C48;
+  text-decoration: none;
+}
+
+.task-content-completed {
+  color: #B8BAC1;
+  text-decoration: line-through;
+}
+
+/* ------- Layout ------- */
+
+.container {
+  width: 900px;
+}
+
+.to-do-list-container {
+  background: #F9F9F9;
+  border-radius: 1rem;
+  box-shadow: 0 15px 20px rgba(0,0,0,0.2);
+  padding: .25rem 0;
+}
+
+.new-to-do {
+  padding: 1rem 2rem;
+  border-bottom: 1px solid #E6E9EE;
+  display: flex;
+  justify-content: space-between;
+}
+
+.new-to-do input {
+  flex-grow: 1;
+  padding: 1rem 0;
+  border: none;
+  background: none;
+}
+
+.new-to-do button {
+  background-color:#44F1A6;
+  border: none;
+  padding: 1rem 2rem;
+  margin-left: 1rem;
+  border-radius: .5rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.to-do {
+  padding: 1rem 2rem;
+  border-bottom: 1px solid #E6E9EE;
+  display: flex;
+  justify-content: space-between;
+}
+
+.left-side {
+  display: flex;
+  align-items: center;
+}
+
+.select {
+  margin-right: .5rem;
+}
+
+.to-do button {
+  border: none;
+  background: none;
+}
+
+ion-icon {
+  color: #9B9B9B;
+  --ionicon-stroke-width: 20px;
+}
+
+.left-side ion-icon {
+  color: #B8BAC1;
+}
+
+.delete {
+  display: none;
+}
+
+ion-icon[name="checkmark-circle-outline"] {
+  color: #4797FF;
+  --ionicon-stroke-width: 32px;
+}
+
+.bottom-content {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  align-items: center;
+}
+
+.to-do-filter {
+  display: flex;
+}
+
+.filter-item {
+  margin-left: .5rem;
+  padding: .5rem 1rem;
+}
+
+.active {
+  background-color: #E6EAED; 
+  border-radius: 1.5rem;
+  color: #3C3C48;
+}
+
+/* ------- Hover States ------- */
+ion-icon:hover {
+  color: #3C3C48;
+}
+
+.to-do:hover .delete {
+  display: block;
+}
+
+ion-icon[name="checkmark-circle-outline"]:hover {
+  color: #4797FF;
+  --ionicon-stroke-width: 32px;
+}
+
+/* ------- Animation ------- */
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
