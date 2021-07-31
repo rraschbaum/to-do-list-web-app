@@ -1,3 +1,9 @@
+var filterResults = function () {
+  $(this).addClass('active');
+  $(this).siblings().removeClass('active');
+  getTasks();
+}
+
 var getTasks = function() {
   $.ajax({
     type: "GET",
@@ -5,8 +11,31 @@ var getTasks = function() {
     dataType: "json",
     success: function (response, textStatus) {
       $('.to-dos').empty();
-      console.log(response.tasks);
-      response.tasks.forEach(function (task) {
+
+      var returnActiveTasks = response.tasks.filter(function (task) {
+        if (!task.completed) {
+          return task.id;
+        }
+      });
+      var returnCompletedTasks = response.tasks.filter(function (task) {
+        if (task.completed) {
+          return task.id;
+        }
+      });
+
+      var filter = $('.active').attr('id');
+
+      if (filter === 'all' || filter === '') {
+        taskItems = response.tasks;
+      }
+      if (filter === 'active') {
+        taskItems = returnActiveTasks;
+      }
+      if (filter === 'completed') {
+        taskItems = returnCompletedTasks;
+      }
+
+      taskItems.forEach(function (task) {
         var taskContent = `
           <div class="to-do">
             <div class="left-side">
@@ -19,7 +48,7 @@ var getTasks = function() {
           </div>
         `;
         $('.to-dos').append(taskContent);
-      });
+      })
 
       // update the amount of task items
       $('.to-do-amount span').text(response.tasks.length);
@@ -120,5 +149,8 @@ $(document).ready(function () {
     } else {
     } taskIsComplete($(this).data('id'));
   });
+
+  // filtering
+  $('.to-do-filter button').on('click', filterResults);
 
 });
