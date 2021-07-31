@@ -35,7 +35,11 @@ var getTasks = function() {
         taskItems = returnCompletedTasks;
       }
 
-      taskItems.forEach(function (task) {
+      var sortedItems = taskItems.sort(function (a, b) {
+        return Date.parse(a.created_at) - Date.parse(b.created_at);
+      });
+
+      sortedItems.forEach(function (task) {
         var taskContent = `
           <div class="to-do">
             <div class="left-side">
