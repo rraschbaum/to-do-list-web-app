@@ -55,7 +55,7 @@ var getTasks = function() {
       })
 
       // update the amount of task items
-      $('.to-do-amount span').text(response.tasks.length);
+      $('.to-do-amount span').text(returnActiveTasks.length);
     },
     error: function (request, textStatus, errorMessage) {
       console.log(errorMessage);
